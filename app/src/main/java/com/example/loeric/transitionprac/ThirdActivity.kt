@@ -1,24 +1,15 @@
 package com.example.loeric.transitionprac
 
-import android.animation.Animator
-import android.animation.AnimatorListenerAdapter
 import android.app.ActivityOptions
 import android.content.Intent
-import android.media.Image
 import android.os.Build
 import android.os.Bundle
 import android.support.annotation.RequiresApi
 import android.support.v7.app.AppCompatActivity
-import android.transition.ChangeImageTransform
 import android.transition.Fade
-import android.transition.Slide
-import android.transition.Transition
-import android.util.Log
-import android.view.Gravity
 import android.view.View
 import android.view.ViewAnimationUtils
 import android.view.Window
-import android.view.animation.Animation
 import android.widget.ImageView
 
 @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
@@ -33,6 +24,7 @@ class ThirdActivity : AppCompatActivity() {
 
         val circle1 = findViewById<ImageView>(R.id.imageview22)
         val circle2 = findViewById<ImageView>(R.id.imageview33)
+        val addTransition = TransitionAnimationMethod()
 
 
         circle1?.let {
@@ -118,7 +110,7 @@ class ThirdActivity : AppCompatActivity() {
 
 
 
-        setupWindowAnimation()
+        setupWindowAnimation(addTransition)
     }
 
 //    private fun presentActivity(view: View) {
@@ -135,13 +127,13 @@ class ThirdActivity : AppCompatActivity() {
 
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
-    private fun setupWindowAnimation() {
+    private fun setupWindowAnimation(addTransition: TransitionAnimationMethod) {
 
         val fade = Fade()
         fade.duration = 500
 
-        window.exitTransition = fade
-        window.enterTransition = fade
+        window.exitTransition = addTransition.setFadeTransition()
+        window.enterTransition = addTransition.setFadeTransition()
 //        val slide1 = Slide(Gravity.START)
 //        slide1.duration = 500
 //

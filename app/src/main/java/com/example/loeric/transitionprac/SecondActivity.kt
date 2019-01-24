@@ -2,19 +2,12 @@ package com.example.loeric.transitionprac
 
 import android.app.ActivityOptions
 import android.content.Intent
-import android.media.Image
 import android.os.Build
 import android.os.Bundle
 import android.support.annotation.RequiresApi
 import android.support.v7.app.AppCompatActivity
-import android.transition.ChangeImageTransform
-import android.transition.Explode
-import android.transition.Slide
-import android.view.Gravity
 import android.view.View
 import android.view.Window
-import android.view.animation.AnticipateInterpolator
-import android.view.animation.BounceInterpolator
 import android.widget.Button
 import android.widget.ImageView
 
@@ -29,6 +22,7 @@ class SecondActivity : AppCompatActivity() {
         val test: Button = findViewById(R.id.btn3)
         val circle : ImageView = findViewById(R.id.imageView2)
         val circle2 : ImageView = findViewById(R.id.imageView3)
+        val addTransitions = TransitionAnimationMethod()
 
         back.setOnClickListener {
             val i = Intent(this@SecondActivity, MainActivity::class.java)
@@ -56,21 +50,21 @@ class SecondActivity : AppCompatActivity() {
         }
 
 
-        setupWindowAnimations()
+        setupWindowAnimations(addTransitions)
     }
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
-    private fun setupWindowAnimations() {
+    private fun setupWindowAnimations(addTransitions: TransitionAnimationMethod) {
 //BounceInterpolator()  AnticipateOvershootInterpolator()  AnticipateInterpolator()
-        val explode1 = Explode()
-        explode1.duration = 1000
-        explode1.interpolator = BounceInterpolator()
-        val explode2 = Explode()
-        explode2.duration = 500
-        explode2.interpolator = AnticipateInterpolator()
+//        val explode1 = Explode()
+//        explode1.duration = 1000
+//        explode1.interpolator = BounceInterpolator()
+//        val explode2 = Explode()
+//        explode2.duration = 500
+//        explode2.interpolator = AnticipateInterpolator()
 
-        window.enterTransition = explode1
-        window.exitTransition = explode2
+        window.enterTransition = addTransitions.setExplodeTransitions("BounceInterpolator")
+        window.exitTransition = addTransitions.setExplodeTransitions("AnticipateInterpolator")
 
     }
 }
