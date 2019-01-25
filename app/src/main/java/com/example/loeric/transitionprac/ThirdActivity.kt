@@ -129,11 +129,11 @@ class ThirdActivity : AppCompatActivity() {
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     private fun setupWindowAnimation(addTransition: TransitionAnimationMethod) {
 
-        val fade = Fade()
-        fade.duration = 500
+//        val fade = Fade()
+//        fade.duration = 500
 
-        window.exitTransition = addTransition.setFadeTransition()
-        window.enterTransition = addTransition.setFadeTransition()
+        window.exitTransition = addTransition.setFadeTransition(500)
+        window.enterTransition = addTransition.setFadeTransition(500)
 //        val slide1 = Slide(Gravity.START)
 //        slide1.duration = 500
 //

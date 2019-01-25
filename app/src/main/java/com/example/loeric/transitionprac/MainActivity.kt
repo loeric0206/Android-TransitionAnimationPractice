@@ -33,8 +33,8 @@ class MainActivity : AppCompatActivity() {
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     private fun setupWindowAnimation(addTransition: TransitionAnimationMethod?) {
 
-        window.enterTransition = addTransition!!.setSlideTransitions("start")
-        window.exitTransition = addTransition.setSlideTransitions("end")
+        window.enterTransition = addTransition!!.setSlideTransitions("start", 400)
+        window.exitTransition = addTransition.setSlideTransitions("end", 400)
 
     }
 

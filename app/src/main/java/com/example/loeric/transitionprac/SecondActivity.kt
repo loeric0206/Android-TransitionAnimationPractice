@@ -63,8 +63,8 @@ class SecondActivity : AppCompatActivity() {
 //        explode2.duration = 500
 //        explode2.interpolator = AnticipateInterpolator()
 
-        window.enterTransition = addTransitions.setExplodeTransitions("BounceInterpolator")
-        window.exitTransition = addTransitions.setExplodeTransitions("AnticipateInterpolator")
+        window.enterTransition = addTransitions.setExplodeTransitions("BounceInterpolator", 500)
+        window.exitTransition = addTransitions.setExplodeTransitions("AnticipateInterpolator", 500)
 
     }
 }

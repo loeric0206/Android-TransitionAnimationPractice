@@ -13,25 +13,25 @@ import android.view.animation.BounceInterpolator
 class TransitionAnimationMethod {
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
-    fun setSlideTransitions(type: String): Slide {
+    fun setSlideTransitions(type: String, d: Long): Slide {
         var slide: Slide? = null
 
         when (type) {
             "start" -> {
                 slide = Slide(Gravity.START)
-                slide.duration = 500
+                slide.duration = d
             }
             "end" -> {
                 slide = Slide(Gravity.END)
-                slide.duration = 500
+                slide.duration = d
             }
             "top" -> {
                 slide = Slide(Gravity.TOP)
-                slide.duration = 500
+                slide.duration = d
             }
             "bottom" -> {
                 slide = Slide(Gravity.BOTTOM)
-                slide.duration = 500
+                slide.duration = d
             }
 
         }
@@ -39,30 +39,30 @@ class TransitionAnimationMethod {
     }
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
-    fun setExplodeTransitions(type: String): Explode {
+    fun setExplodeTransitions(type: String, d: Long): Explode {
         val explode = Explode()
 
         when (type) {
             "BounceInterpolator" -> {
-                explode.duration = 1000
+                explode.duration = d
                 explode.interpolator = BounceInterpolator()
             }
             "AnticipateInterpolator" -> {
-                explode.duration = 500
+                explode.duration = d
                 explode.interpolator = AnticipateInterpolator()
 
             }
             "AnticipateOvershootInterpolator" -> {
-                explode.duration = 500
+                explode.duration = d
                 explode.interpolator = AnticipateOvershootInterpolator()
             }
         }
         return explode
     }
     @RequiresApi(Build.VERSION_CODES.KITKAT)
-    fun setFadeTransition(): Fade {
+    fun setFadeTransition(d: Long): Fade {
         val fade = Fade()
-        fade.duration = 500
+        fade.duration = d
         return fade
     }
 
